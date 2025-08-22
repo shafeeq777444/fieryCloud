@@ -7,7 +7,7 @@ const subscriberSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['email', 'phoneNumber'],
+    enum: ['email'],
     required: true
   },
   vendor: {

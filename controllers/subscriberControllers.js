@@ -2,8 +2,12 @@ import { addSubscriberService, getSubscribersService } from "../services/subscri
 
 export const addSubscriberController=async(req,res)=>{
    console.log(req.body)
-    await addSubscriberService(req.body)
-    res.status(201).json({ message: "Thanks for Subscription" });
+    try {
+        await addSubscriberService(req.body)
+        res.status(201).json({ message: "Thanks for Subscription" });
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
 }
 
 // Controller

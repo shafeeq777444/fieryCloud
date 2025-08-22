@@ -12,19 +12,18 @@ const teamEmails = [
 
 export const addSubscriberService = async ({ data, vendor }) => {
     data = data.trim();
-    // const existing = await Subscriber.findOne({ data });
-    // if (existing) {
-    //   throw new Error("Subscriber already exists");
-    // }
+    const existing = await Subscriber.findOne({ data });
+    if (existing) {
+      throw new Error("Subscriber already exists",400);
+      console.log(existing)
+    }
     try {
         let type = "";
 
         if (emailRegex.test(data)) {
             type = "email";
-        } else if (phoneRegex.test(data)) {
-            type = "phoneNumber";
-        } else {
-            throw new CustomError("Invalid email or phone number format", 400);
+        }  else {
+            throw new CustomError("Invalid email  format", 400);
         }
 
         const newSubscriber = await Subscriber.create({ data, type, vendor });
