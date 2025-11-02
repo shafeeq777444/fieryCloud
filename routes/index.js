@@ -10,6 +10,9 @@ import faqRoutes from './faqRoutes.js'
 import contactRoutes from './contactUsRoutes.js'
 const route=express.Router()
 
+route.get("/test",(req,res)=>{
+    res.send("testing hello i am fierygrills api")
+})
 route.use("/plans",planRoutes)
 route.use('/menus',dishesRoutes)
 route.use('/locations',locationRoutes)
